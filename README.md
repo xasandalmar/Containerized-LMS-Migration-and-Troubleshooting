@@ -1,47 +1,50 @@
-1.1 Project Overview
-Overview of Project ☁️
-Scenario:
+# Project 1: Containerized LMS Migration and Troubleshooting
 
-EduTech Solutions is modernizing their outdated LMS by migrating from on-premises to a containerized AWS application. Their initial deployment encountered critical issues preventing proper functionality. As their new Cloud Support Engineer, you'll identify and resolve these containerization issues before semester launch.
+This project demonstrates how to **migrate a Learning Management System (LMS)** into a **containerized environment** using **AWS ECS Fargate**, and how to **troubleshoot** real-world issues related to containers, ALB configurations, and security groups.
 
-Our solution:
+---
 
-A containerized LMS frontend on AWS ECS Fargate with monitoring capabilities. This project demonstrates how AWS container services work together and teaches essential troubleshooting skills for common misconfigurations.
+## 📋 Table of Contents
+1. [Project Overview](docs/01-overview.md)
+2. [Setting up the AWS Environment](docs/02-aws-setup.md)
+3. [Container Image Preparation](docs/03-container-image-prep.md)
+4. [Deploying LMS Frontend on ECS Fargate](docs/04-deploy-ecs-fargate.md)
+5. [Troubleshooting ECS Containers](docs/05-troubleshooting-ecs.md)
+6. [Fixing ALB Configuration Issues](docs/06-alb-issues.md)
+7. [Security Group Lab](docs/07-security-group-lab.md)
+8. [Conclusion and Resource Cleanup](docs/08-cleanup.md)
 
-About Project:
+---
 
-We'll recreate EduTech's containerized deployment with the same issues their team faced, then troubleshoot using CloudWatch, ECS logs, and AWS Console. You'll gain hands-on experience diagnosing and fixing real-world container issues just as a cloud support engineer would in a production environment.
+## 🏗️ Architecture Diagram
+![Architecture Diagram](docs/architecture-diagram.png)
 
-Steps to be performed 👩‍💻
-In the next few lessons, we'll be going through the following steps.
+The LMS frontend runs as a containerized application on **AWS ECS Fargate**, fronted by an **Application Load Balancer (ALB)** within a secure **VPC** network. Logs and metrics are collected via **CloudWatch**.
 
-Setting up the AWS environment for containerized applications
-Container image preparation for the LMS frontend
-Deploying the LMS frontend on ECS Fargate
-Comprehensive troubleshooting of container issues in ECS
-Resolving ALB configuration issues
-Correcting security group misconfigurations
-Proper cleanup of resources
-Services Used 🛠
-Amazon ECS with Fargate: Serverless compute engine for containers
-Application Load Balancer (ALB): Routes HTTP/HTTPS traffic to containers
-Amazon CloudWatch: Monitoring and observability for logs and metrics
-AWS IAM: Identity and access management for AWS resources
-Amazon ECR: Container registry for managing and deploying images
-AWS Security Groups: Virtual firewalls controlling network traffic
-Estimated Time & Cost ⚙️
-This project is estimated to take about 60-90 minutes
-Cost: Under $5 USD (with prompt resource cleanup)
-➡️ Diagram
-This is the architectural diagram for the project:
+---
 
+## 🚀 Technologies Used
+- AWS ECS (Fargate)
+- AWS ECR
+- AWS ALB + VPC + Security Groups
+- Docker
+- Terraform (for infrastructure)
+- CloudWatch (for monitoring)
 
+---
 
-➡️ Final Result
-A fully functional containerized LMS that demonstrates:
+## ⚙️ Quick Start
+```bash
+# Clone repo
+git clone https://github.com/hassandalmar/lms-containerized-migration.git
+cd lms-containerized-migration
 
-Proper container deployment practices
-Secure configuration of AWS services
-Effective troubleshooting methodologies
-Scalable architecture for educational technology solutions
-This is what our project will look like, once built:
+# Build image
+bash scripts/build-image.sh
+
+# Push to AWS ECR
+bash scripts/push-image.sh
+
+# Deploy infrastructure
+cd infrastructure/terraform
+terraform apply
